@@ -8,7 +8,9 @@ ini_set('display_errors', 1);
 // Подключаем автозагрузчик PSR-4
 require  __DIR__ . '../vendor/autoload.php';
 
-$dev = new Dev;
-$router = new Router;
+session_start();
 
+// $dev = new Dev;
+
+$router = new Router;
 $router->run();
