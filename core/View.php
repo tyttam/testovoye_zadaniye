@@ -11,8 +11,9 @@ class View
         $this->path = $route;
     }
 
-    public function render($view, $model = [])
+    public function render($view, $vars = [])
     {
+        extract($vars);
         if (file_exists('views/' . $this->path[0] . '/' . $view . '.php')) {
             ob_start();
             require 'views/' . $this->path[0] . '/' . $view . '.php';
