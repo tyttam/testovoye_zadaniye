@@ -1,7 +1,9 @@
 <?php
 namespace app\controllers;
 
-class SiteConroller
+use app\core\Controller;
+
+class SiteConroller extends Controller
 {
 
     public function actionIndex()
