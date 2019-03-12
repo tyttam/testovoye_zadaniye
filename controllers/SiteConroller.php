@@ -5,10 +5,9 @@ use app\core\Controller;
 
 class SiteConroller extends Controller
 {
-
     public function actionIndex()
     {
-        echo "test";
+        $this->view->render('index');
     }
 
     public function actionSitemap()

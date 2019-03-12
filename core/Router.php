@@ -48,7 +48,7 @@ class Router
                     // Проверяем на существование метода в нашем контроллере, он же экшен
                     if (method_exists($controller_path, $action)) {
                         // Создаем экземпляр класса (controller)
-                        $controller = new $controller_path;
+                        $controller = new $controller_path($route = $params);
                         // Вызываем в нем метод (action)
                         $controller->$action();
                     } else {

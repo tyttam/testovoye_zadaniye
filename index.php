@@ -10,7 +10,7 @@ require  __DIR__ . '../vendor/autoload.php';
 
 session_start();
 
-// $dev = new Dev;
+$dev = new Dev;
 
 $router = new Router;
 $router->run();
