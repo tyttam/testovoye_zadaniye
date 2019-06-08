@@ -5,6 +5,7 @@ class Router
 {
     protected $routers;
     protected $params;
+    public $url_params = [];
 
     public function __construct()
     {
@@ -28,6 +29,13 @@ class Router
         foreach ($this->routers as $route => $params) {
             // Проверяем REQUEST_URI и роутер через регулярное выражение
             if (preg_match($route, $url, $matches)) {
+                if (count($matches) > 1) {
+                    foreach ($matches as $key => $value) {
+                        if ($key != 0) {
+                            $this->url_params[] = $value;
+                        }
+                    }
+                }
                 $this->params = $params;
                 return true;
             }
@@ -48,19 +56,19 @@ class Router
                     // Проверяем на существование метода в нашем контроллере, он же экшен
                     if (method_exists($controller_path, $action)) {
                         // Создаем экземпляр класса (controller)
-                        $controller = new $controller_path($route = $params);
+                        $controller = new $controller_path($route = $params, $this->url_params);
                         // Вызываем в нем метод (action)
                         $controller->$action();
                     } else {
-                        // !!! Потом исправить
+                        // TODO: Настроить 404
                         echo 'Не найден экшен: ' . $action;
                     }
                 } else {
-                    // !!! Потом исправить
+                    // TODO: Настроить 404
                     echo 'Не найден контроллер: ' . $controller_path;
                 }
             } else {
-                // !!! Потом исправить
+                // TODO: Настроить 404
                 echo 'Параметр в конфиге роутера указан не правильно. Должен быть такого вида : "controller/action". <br> Сейчас '. $this->params;
             }
         }

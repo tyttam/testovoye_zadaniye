@@ -1,5 +1,9 @@
 <?php
 return [
     '' => 'site/index',
-    'sitemap' => 'site/sitemap',
+    'login' => 'site/login',
+    'logout' => 'site/logout',
+    'update-task\/id=?(\d+)' => 'site/updatetask',
+    'create-task' => 'site/createtask',
+    'add-new-task' => 'site/addnewtask',
 ];

@@ -1,13 +1,11 @@
 <?php
-namespace app\lib;
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-class Dev
+function debug($value)
 {
-    function debug($value)
-    {
-        echo "<pre>";
-        print_r($value);
-        echo "</pre>";
-        exit;
-    }
+    echo "<pre>";
+    print_r($value);
+    echo "</pre>";
+    exit;
 }
